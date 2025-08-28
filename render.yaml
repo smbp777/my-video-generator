@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: video-generator
+    plan: free
+    runtime: python
+    envVars:
+      - key: ELEVENLABS_API_KEY
+        value: sk_0ddc63f600404406c47aba5193a85793223df9a19eff7689
+    buildCommand: pip install -r requirements.txt && mkdir -p videos audio
+    startCommand: python app.py
+    disk:
+      name: video-storage
+      mountPath: /var/lib/videos
